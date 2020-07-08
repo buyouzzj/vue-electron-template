@@ -1,0 +1,53 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "工具箱",
+  "private": true,
+  "author": "yunbo",
+  "scripts": {
+    "build": "vue-cli-service electron:build",
+    "release": "vue-cli-service electron:build",
+    "start": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
+  },
+  "main": "background.js",
+  "appId": "com.yunbo.app",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^3.4.3",
+    "deepmerge": "^4.2.2",
+    "electron": "^8.0.0",
+    "electron-dl": "^2.0.0",
+    "electron-localstorage": "^1.0.5",
+    "electron-store": "^5.1.1",
+    "request-progress": "^3.0.0",
+    "vue": "2.6.10",
+    "vue-electron": "^1.0.6",
+    "vue-infinite-loading": "^2.4.4",
+    "vue-lazyload": "^1.3.3",
+    "vue-router": "3.0.3",
+    "vuex": "^3.1.2",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-router": "^4.1.0",
+    "@vue/cli-plugin-vuex": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "vue-cli-plugin-electron-builder": "^1.4.4",
+    "vue-cli-plugin-element": "^1.0.1",
+    "vue-html-loader": "^1.2.4",
+    "vue-template-compiler": "2.6.10",
+    "ws": "^7.2.5"
+  },
+  "__npminstall_done": false
+}
