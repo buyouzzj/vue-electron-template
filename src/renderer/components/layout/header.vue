@@ -3,9 +3,9 @@
     <div class="title-wrapper" @click="toggleCollapse">
       <Icon type="md-menu" style="font-size: 20px;" :class="collapse ? 'rotate90' : ''" />
     </div>
-    <div>
+    <!-- <div>
       <Button type="success" size="small" class="no-drag" @click="reload">刷新</Button>
-    </div>
+    </div> -->
     <div class="icon-wrapper">
       <Tooltip v-for="item in iconList" :key="item.action" placement="bottom" transfer :content="item.tooltip">
         <Icon :type="item.type" @click="setFrame(item.action)" />

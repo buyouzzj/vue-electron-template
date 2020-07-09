@@ -16,10 +16,6 @@ export default new Vuex.Store({
       })
     }
   },
-  getters: {
-    currentNick: state => state.buyerNick,
-    shopAccount: state => state.shopAccount
-  },
   actions: {},
   modules: {}
 })

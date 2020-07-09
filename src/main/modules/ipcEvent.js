@@ -1,21 +1,8 @@
 import { ipcMain, app } from 'electron'
 import log from '../utils/log'
 import Logs from '../commander/logs'
-import {
-  toggleNodeVersion,
-  deleteRar,
-  runRelease,
-  openExe,
-  compress
-} from '../commander'
 
 const logs = new Logs()
-
-function awaitWrapper (promise) {
-  return promise.catch(err => {
-    global.mainWindow.send('release-fail', err)
-  })
-}
 
 export default function () {
   ipcMain.on('toggle-mini', (event, value) => {
@@ -55,42 +42,6 @@ export default function () {
   ipcMain.on('window-close', () => {
     log('关闭窗口')
     global.mainWindow.close()
-  })
-
-  ipcMain.on('release-first', async (e, data) => {
-    if (data === 0) {
-      // 第一步
-      log('第一次打包')
-      await awaitWrapper(toggleNodeVersion())
-      await awaitWrapper(deleteRar())
-      await awaitWrapper(runRelease(true))
-      global.mainWindow.send('release-success', data)
-    }
-    if (data === 1) {
-      log('安装中...')
-      openExe()
-        .then(
-          bool => bool && global.mainWindow.send('release-success', data)
-        ).catch(e => {
-          global.mainWindow.send('release-fail', e)
-        })
-    }
-    if (data === 2) {
-      compress()
-        .then(bool => bool && global.mainWindow.send('release-success', data))
-        .catch(e => {
-          global.mainWindow.send('release-fail', e)
-        })
-    }
-    if (data === 3) {
-      log('第二次打包')
-      runRelease()
-        .then(() => {
-          global.mainWindow.send('release-success', data)
-        }).catch(e => {
-          global.mainWindow.send('release-fail', e)
-        })
-    }
   })
 
   ipcMain.on('move-dll', async (e, data) => {
